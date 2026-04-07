@@ -1,110 +1,204 @@
 .services {
-  padding: 120px 5%;
-  background-color: #fdfcf9; /* Light Warm Theme */
-  color: #1a1a1a;
-  text-align: center;
+  position: relative;
+  padding: 160px 6%;
+  background-color: #0c0c0c; /* Deep Obsidian to match About */
+  color: #f5f5f5;
+  overflow: hidden;
+}
+
+.services-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  pointer-events: none;
 }
 
 .services-container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
+/* --- Header --- */
 .services-header {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
-.services-tag {
-  font-size: 0.75rem;
-  letter-spacing: 5px;
+.services-tag-mini {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 6px;
   text-transform: uppercase;
   color: #b3945a;
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
-.services-title {
+.services-main-title {
   font-family: 'Playfair Display', serif;
-  font-size: 3rem;
-  font-weight: 400;
-  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 500;
 }
 
-.services-desc {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  color: #666;
-  line-height: 1.6;
-  font-weight: 300;
-}
-
-/* Services Grid Layout */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-}
-
-.service-card {
-  padding: 50px 40px;
-  background: transparent;
-  border: 1px solid #eee; /* Very thin subtle border */
-  text-align: left;
-  transition: all 0.5s ease;
-  position: relative;
-}
-
-/* Hover Effect: Border changes to Gold and subtle Shadow */
-.service-card:hover {
-  border-color: #b3945a;
-  transform: translateY(-10px);
-  background: #fff;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-}
-
-.service-number {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.9rem;
+.services-main-title .italic-text {
+  font-style: italic;
   color: #b3945a;
-  margin-bottom: 20px;
-  display: block;
-  opacity: 0.6;
 }
 
-.service-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
-
-.card-line {
-  width: 30px;
+.header-line {
+  width: 60px;
   height: 1px;
   background: #b3945a;
-  margin-bottom: 20px;
-  transition: width 0.4s ease;
+  margin-top: 40px;
+  opacity: 0.4;
 }
 
-.service-card:hover .card-line {
-  width: 60px; /* Line expands on hover */
+/* --- Services List (The Shuttle Row Style) --- */
+.services-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.service-card p {
-  font-size: 0.95rem;
-  line-height: 1.7;
+.service-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  padding: 60px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+}
+
+.service-row:hover {
+  padding-left: 20px;
+}
+
+/* Numbering & Titles */
+.row-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.service-id {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.7rem;
+  color: #b3945a;
+  margin-top: 10px;
+  letter-spacing: 2px;
+}
+
+.title-group h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  margin-bottom: 10px;
+  transition: color 0.4s ease;
+}
+
+.service-subtag {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
   color: #777;
-  font-weight: 300;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
+/* Description & Arrow */
+.row-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+}
+
+.row-right p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 450px;
+}
+
+.service-arrow {
+  color: #b3945a;
+  transform: translateX(-20px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.service-row:hover .service-arrow {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.service-row:hover .title-group h3 {
+  color: #b3945a;
+}
+
+/* Subtle Reveal Background */
+.row-hover-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(179, 148, 90, 0.03) 0%, transparent 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.service-row:hover .row-hover-bg {
+  opacity: 1;
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media (max-width: 900px) {
   .services {
-    padding: 80px 20px;
+    padding: 100px 7% 60px;
   }
-  .services-title {
-    font-size: 2.2rem;
+
+  .services-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .header-line {
+    margin: 30px auto 0;
+  }
+
+  .service-row {
+    grid-template-columns: 1fr; /* Stack vertically on mobile */
+    padding: 45px 0;
+    gap: 25px;
+  }
+
+  .service-row:hover {
+    padding-left: 0; /* No indent on mobile to save space */
+  }
+
+  .row-left {
+    gap: 20px;
+  }
+
+  .service-id {
+    font-size: 0.6rem;
+  }
+
+  .row-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .row-right p {
+    font-size: 0.85rem;
+    max-width: 100%;
+  }
+
+  .service-arrow {
+    opacity: 1;
+    transform: none; /* Always visible on mobile */
   }
 }

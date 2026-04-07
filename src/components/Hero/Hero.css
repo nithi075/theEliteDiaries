@@ -1,26 +1,18 @@
-:root {
-  --primary-gold: #c5a059;
-  --text-white: #ffffff;
-  --overlay-dark: rgba(0, 0, 0, 0.5);
-  --font-serif: 'Playfair Display', serif; /* Ensure you import this font in index.html */
-}
+/* --- HERO SECTION - FULL UPDATED CODE --- */
 
 .hero {
   position: relative;
   height: 100vh;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #000;
+  background: #fdfbf8; /* Ivory background */
 }
 
-/* Background Styling */
+/* Background & Cinematic Effects */
 .hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -31,156 +23,187 @@
   height: 100%;
   object-fit: cover;
   transform: scale(1.05);
-  animation: slowZoom 20s infinite alternate;
+  filter: brightness(0.95) contrast(1.02) sepia(5%); 
+  transition: transform 10s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero:hover .hero-img {
+  transform: scale(1);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(280, 251, 248, 0.5),
+    rgba(253, 251, 248, 0.4)
+  );
+  z-index: 2;
 }
 
 .hero-vignette {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%),
-              linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-  z-index: 2;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(253, 251, 248, 0) 40%,
+    rgba(253, 251, 248, 0.6) 100%
+  );
+  z-index: 3;
 }
 
-/* Content Layout */
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Content & Typography */
 .hero-content {
   position: relative;
-  z-index: 3;
+  z-index: 10;
   text-align: center;
-  color: var(--text-white);
-  padding: 0 20px;
+  max-width: 1000px;
+  padding: 20px;
+}
+
+.hero-text-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-tag {
-  display: block;
-  font-size: 0.8rem;
-  letter-spacing: 4px;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 5px;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  color: var(--primary-gold);
+  color: #b3945a; /* Gold accent */
+  margin-bottom: 25px;
   font-weight: 500;
-  opacity: 0;
-  animation: fadeInUp 1s forwards 0.5s;
+  display: block;
 }
 
 .hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 7.5vw, 6rem);
   line-height: 1.1;
-  font-weight: 400;
-  margin-bottom: 25px;
-  opacity: 0;
-  animation: fadeInUp 1s forwards 0.8s;
+  color: #1a1a1a; /* Deep Charcoal */
+  letter-spacing: -0.5px;
+  margin-bottom: 35px;
 }
 
 .accent-text {
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
+  background: linear-gradient(90deg, #b3945a, #1a1a1a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-divider {
   width: 60px;
   height: 1px;
-  background: var(--primary-gold);
-  margin: 0 auto 30px;
-  opacity: 0;
-  animation: fadeInUp 1s forwards 1s;
+  background: linear-gradient(90deg, transparent, #b3945a, transparent);
+  margin: 40px auto;
+  opacity: 0.6;
 }
 
 .hero-description {
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  font-weight: 300;
-  margin-bottom: 40px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #333;
   line-height: 1.8;
-  opacity: 0;
-  animation: fadeInUp 1s forwards 1.2s;
+  margin-bottom: 50px;
+  font-weight: 300;
 }
 
-/* Buttons */
+.hero-description span {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.65rem;
+  letter-spacing: 6px;
+  color: #b3945a;
+  font-weight: 500;
+}
+
+/* --- BUTTONS (Centered & Uniform) --- */
 .hero-actions {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  opacity: 0;
-  animation: fadeInUp 1s forwards 1.5s;
+  gap: 25px;
+  justify-content: center; /* Desktop Center */
+  align-items: center;
+}
+
+.btn-premium, .btn-outline {
+  display: inline-block;
+  padding: 18px 45px;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 3px;
+  font-size: 0.7rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  min-width: 220px; /* Rendu button-um ore width-la irukkum */
+  text-align: center;
 }
 
 .btn-premium {
-  padding: 15px 35px;
-  background: var(--primary-gold);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 0; /* Square edges look more luxury */
-  transition: all 0.4s ease;
-  border: 1px solid var(--primary-gold);
+  background: #1a1a1a;
+  color: #fdfbf8;
+  border: 1px solid #1a1a1a;
 }
 
 .btn-premium:hover {
   background: transparent;
-  color: var(--primary-gold);
+  color: #1a1a1a;
 }
 
 .btn-outline {
-  padding: 15px 35px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.4s ease;
+  border: 1px solid rgba(26, 26, 26, 0.2);
+  color: #1a1a1a;
+  background: transparent;
 }
 
 .btn-outline:hover {
-  background: #fff;
-  color: #000;
+  border-color: #1a1a1a;
+  background: rgba(26, 26, 26, 0.03);
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  text-align: center;
-  opacity: 0.6;
-}
-
-.mouse {
-  width: 20px;
-  height: 35px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  margin: 0 auto 10px;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slowZoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
-
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
+  .hero { 
+    height: 95vh; 
   }
-}.hero{
-  margin-bottom:0;
-}
+  
+  .hero-title { 
+    font-size: 2.8rem; 
+  }
 
-.about{
-  margin-top:0;
+  .hero-actions { 
+    flex-direction: column; /* Buttons-a onnu mela onnu stack pannum */
+    gap: 15px; 
+    width: 100%; 
+    max-width: 320px; /* Container width control for mobile */
+    margin: 0 auto;   /* Container-aiyum center pannum */
+  }
+
+  .btn-premium, .btn-outline { 
+    width: 100%; 
+    min-width: unset; /* Mobile-la auto scale */
+    padding: 18px 0; 
+  }
 }

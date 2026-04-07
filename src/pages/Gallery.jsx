@@ -2,8 +2,8 @@ import React from "react";
 import "./Gallery.css";
 
 // Replace these with your actual local file paths
-import wedding from "../assets/wedding1.jpeg";
-import wedding2 from "../assets/img2.jpeg";
+import wedding from "../assets/img2.jpeg";
+import wedding2 from "../assets/img1.jpeg";
 import couple from "../assets/img3.jpeg";
 import portrait from "../assets/img4.jpeg";
 import candid from "../assets/img5.jpeg";
@@ -11,12 +11,12 @@ import engagement from "../assets/img6.jpeg";
 import reception from "../assets/img7.jpeg";
 import bride from "../assets/img9.jpeg";
 import traditional from "../assets/img8.jpeg";
-import cinematic from "../assets/cinematic.jpeg";
+import cinematic from "../assets/img10.jpeg";
 
 export default function Gallery() {
   const items = [
     { title: "Wedding Photography", img: wedding, isFeatured: true },
-    { title: "Signature Wedding", img: wedding2, isFeatured: false },
+    { title: "Baby Shower Photography", img: wedding2, isFeatured: false },
     { title: "Couple Moments", img: couple, isFeatured: false },
     { title: "Portrait Studio", img: portrait, isFeatured: true },
     { title: "Candid Photography", img: candid, isFeatured: false },
@@ -24,7 +24,7 @@ export default function Gallery() {
     { title: "Reception Coverage",  img: reception, isFeatured: false },
     { title: "Bridal Portraits",  img: bride, isFeatured: true },
     { title: "Traditional Wedding",  img: traditional, isFeatured: false },
-    { title: "Cinematic Shoots",  img: cinematic, isFeatured: false },
+    { title: "Maternity Shoots",  img: cinematic, isFeatured: false },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function Gallery() {
           with timeless elegance and cinematic storytelling.
         </p>
         <a
-          href="https://wa.me/919952397023?text=Hello%20MV%20Photography,%20I%20want%20to%20book%20a%20photoshoot"
+          href="https://wa.me/919659414250?text=Hello%20Mithuna%20Photography,%20I%20want%20to%20book%20a%20photoshoot"
           target="_blank"
           rel="noopener noreferrer"
           className="gallery-cta"

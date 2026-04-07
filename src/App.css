@@ -26,3 +26,16 @@ section{
 html{
   scroll-behavior:smooth;
 }
+:root {
+  /* Light Theme Colors */
+  --bg-light: #fdfbf8;
+  --text-dark: #1a1a1a;
+  
+  /* Dark Theme Colors */
+  --bg-dark: #0c0c0c;
+  --text-light: #f5f5f5;
+  
+  /* Common Accent */
+  --accent-gold: #b3945a;
+  --easing: cubic-bezier(0.83, 0, 0.17, 1);
+}

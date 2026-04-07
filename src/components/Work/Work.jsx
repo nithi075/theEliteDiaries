@@ -1,65 +1,111 @@
-import { Link } from "react-router-dom";
 import "./Work.css";
+import { useNavigate } from "react-router-dom";
 
-import weddingImg from "../../assets/wedding.jpeg";
-import wedding2Img from "../../assets/wedding-2.jpeg";
-import coupleImg from "../../assets/couple.jpeg";
-import portraitImg from "../../assets/portrait.jpeg";
-import candidImg from "../../assets/candid.jpeg";
-import engagementImg from "../../assets/engagement.jpeg";
-import receptionImg from "../../assets/reception.jpeg";
-import brideImg from "../../assets/bride.jpeg";
-import traditionalImg from "../../assets/traditional.jpeg";
-import cinematicImg from "../../assets/cinematic.jpeg";
+import img1 from "../../assets/wedding1.jpeg";
+import img2 from "../../assets/portrait.jpeg";
+import img3 from "../../assets/mithula3.jpeg";
+import img4 from "../../assets/mithula4.jpeg";
+import img5 from "../../assets/mithula5.jpeg";
+import img6 from "../../assets/mithula6.jpeg";
 
 export default function Work() {
 
-  const portfolio = [
+  const navigate = useNavigate();
 
-    { src: weddingImg, className: "img1", category: "Wedding" },
-    { src: candidImg, className: "img4", category: "Candid" },
-    { src: coupleImg, className: "img3", category: "Portrait" },
-    { src: portraitImg, className: "img2", category: "Couple" },
-    { src: wedding2Img, className: "img5", category: "Wedding" },
-    { src: receptionImg, className: "img6", category: "Engagement" },
-    { src: engagementImg, className: "img7", category: "Reception" },
-    { src: brideImg, className: "img8", category: "Bride" },
-    { src: traditionalImg, className: "img9", category: "Traditional" },
-    { src: cinematicImg, className: "img10", category: "Cinematic" },
-
+  const works = [
+    {
+      id: 1,
+      title: "Eternal Union",
+      category: "Wedding",
+      size: "tall",
+      image: img1
+    },
+    {
+      id: 2,
+      title: "Golden Hour",
+      category: "Portrait",
+      size: "wide",
+      image: img2
+    },
+    {
+      id: 3,
+      title: "The Heritage",
+      category: "Architecture",
+      size: "slim",
+      image: img3
+    },
+    {
+      id: 4,
+      title: "Velvet Nights",
+      category: "Cinematic",
+      size: "tall",
+      image: img4
+    },
+    {
+      id: 5,
+      title: "Soulful Eyes",
+      category: "Portrait",
+      size: "wide",
+      image: img5
+    },
+    {
+      id: 6,
+      title: "Vows in Silence",
+      category: "Wedding",
+      size: "large",
+      image: img6
+    },
   ];
 
   return (
 
     <section className="work" id="work">
 
-      {/* HEADER */}
-      <div className="work-header">
+      <div className="work-grain"></div>
 
-        <span className="work-tag">Our Portfolio</span>
+      <header className="work-header">
 
-        <h2 className="work-title">Captured Memories</h2>
+        <span className="work-tag">
+          Our Curated Gallery
+        </span>
+
+        <h2 className="work-title">
+          Featured <span className="italic-text">Stories</span>
+        </h2>
 
         <div className="title-underline"></div>
 
-      </div>
+      </header>
 
 
-      {/* GRID */}
       <div className="editorial-grid">
 
-        {portfolio.map((item, index) => (
+        {works.map((item) => (
 
-          <div className={`img ${item.className}`} key={index}>
+          <div
+            key={item.id}
+            className={`work-item ${item.size}`}
+          >
 
-            <img
-              src={item.src}
-              alt={item.category}
-              loading="lazy"
-            />
+            <div className="img-container">
 
-            <div className="overlay">
-              {item.category}
+              <img
+                src={item.image}
+                alt={item.title}
+              />
+
+              <div className="work-overlay">
+
+                <span className="cat">
+                  {item.category}
+                </span>
+
+                <h3 className="work-name">
+                  {item.title}
+                </h3>
+
+              </div>
+
             </div>
 
           </div>
@@ -69,14 +115,14 @@ export default function Work() {
       </div>
 
 
-      {/* BUTTON */}
-      <Link to="/gallery">
-
-        <button className="view-more">
-          View More
-        </button>
-
-      </Link>
+      <button
+        className="view-more-btn"
+        onClick={() => navigate("/gallery")}
+      >
+        <span>
+          View Full Portfolio
+        </span>
+      </button>
 
     </section>
 
