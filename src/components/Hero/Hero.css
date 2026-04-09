@@ -1,5 +1,3 @@
-/* --- HERO SECTION - FULL UPDATED CODE --- */
-
 .hero {
   position: relative;
   height: 100vh;
@@ -19,15 +17,21 @@
 }
 
 .hero-img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.05);
+  transform: scale(1.1);
   filter: brightness(0.95) contrast(1.02) sepia(5%); 
-  transition: transform 10s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 10s ease-out;
 }
 
-.hero:hover .hero-img {
+/* Slideshow Active State */
+.hero-img.active {
+  opacity: 1;
   transform: scale(1);
 }
 
@@ -36,7 +40,7 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(280, 251, 248, 0.5),
+    rgba(253, 251, 248, 0.5),
     rgba(253, 251, 248, 0.4)
   );
   z-index: 2;
@@ -89,7 +93,7 @@
   letter-spacing: 5px;
   font-size: 0.7rem;
   text-transform: uppercase;
-  color: #b3945a; /* Gold accent */
+  color: #b3945a; 
   margin-bottom: 25px;
   font-weight: 500;
   display: block;
@@ -99,7 +103,7 @@
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.8rem, 7.5vw, 6rem);
   line-height: 1.1;
-  color: #1a1a1a; /* Deep Charcoal */
+  color: #1a1a1a; 
   letter-spacing: -0.5px;
   margin-bottom: 35px;
 }
@@ -140,11 +144,11 @@
   font-weight: 500;
 }
 
-/* --- BUTTONS (Centered & Uniform) --- */
+/* --- BUTTONS --- */
 .hero-actions {
   display: flex;
   gap: 25px;
-  justify-content: center; /* Desktop Center */
+  justify-content: center;
   align-items: center;
 }
 
@@ -157,7 +161,7 @@
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-  min-width: 220px; /* Rendu button-um ore width-la irukkum */
+  min-width: 220px;
   text-align: center;
 }
 
@@ -185,85 +189,31 @@
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
-  .hero { 
-    height: 95vh; 
+  .hero { height: 95vh; }
+  .hero-title { font-size: 2.8rem; }
+  .hero-actions {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
-  
-  .hero-title { 
-    font-size: 2.8rem; 
-  }
-
-  .hero-actions { 
-    flex-direction: column; /* Buttons-a onnu mela onnu stack pannum */
-    gap: 15px; 
-    width: 100%; 
-    max-width: 320px; /* Container width control for mobile */
-    margin: 0 auto;   /* Container-aiyum center pannum */
-  }
-
-  .btn-premium, .btn-outline { 
-    width: 100%; 
-    min-width: unset; /* Mobile-la auto scale */
-    padding: 18px 0; 
+  .btn-premium, .btn-outline {
+    width: 100%;
+    min-width: unset;
+    padding: 18px 0;
   }
 }
-/* --- Extra Small Devices (Mobile ≤600px) --- */
+
 @media (max-width: 600px) {
-
-  .hero {
-    height: 92vh;
-    padding: 0 5%;
-  }
-
-  .hero-content {
-    padding: 10px;
-  }
-
-  .hero-tag {
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    margin-bottom: 18px;
-  }
-
-  .hero-title {
-    font-size: clamp(2rem, 8vw, 2.4rem);
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    margin-bottom: 25px;
-  }
-
-  .hero-divider {
-    width: 40px;
-    margin: 25px auto;
-  }
-
-  .hero-description {
-    font-size: 0.8rem;
-    letter-spacing: 1.5px;
-    line-height: 1.7;
-    margin-bottom: 35px;
-  }
-
-  .hero-description span {
-    font-size: 0.55rem;
-    letter-spacing: 4px;
-    margin-top: 8px;
-  }
-
-  .hero-actions {
-    max-width: 260px;
-    gap: 12px;
-  }
-
-  .btn-premium,
-  .btn-outline {
-    font-size: 0.65rem;
-    letter-spacing: 2px;
-    padding: 16px 0;
-  }
-
-  .hero-img {
-    transform: scale(1.08); /* keeps cinematic feel on small screen */
-  }
-
+  .hero { height: 92vh; padding: 0 5%; }
+  .hero-content { padding: 10px; }
+  .hero-tag { font-size: 0.6rem; letter-spacing: 3px; margin-bottom: 18px; }
+  .hero-title { font-size: clamp(2rem, 8vw, 2.4rem); margin-bottom: 25px; }
+  .hero-divider { width: 40px; margin: 25px auto; }
+  .hero-description { font-size: 0.8rem; letter-spacing: 1.5px; margin-bottom: 35px; }
+  .hero-description span { font-size: 0.55rem; letter-spacing: 4px; }
+  .hero-actions { max-width: 260px; gap: 12px; }
+  .btn-premium, .btn-outline { font-size: 0.65rem; letter-spacing: 2px; padding: 16px 0; }
+  .hero-img { transform: scale(1.08); }
 }

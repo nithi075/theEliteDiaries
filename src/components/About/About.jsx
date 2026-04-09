@@ -31,7 +31,7 @@ export default function About() {
           {/* Right: Refined Description */}
           <div className="about-right">
             <p className="about-description">
-              Based in <strong>Erode</strong>,MihtunaPhotography specializes in high-end 
+              Based in <strong>Trichy</strong>,MihtunaPhotography specializes in high-end 
               visual storytelling. We believe every frame should be a masterpiece—crafted 
               with elegance, sophistication, and raw authenticity.
             </p>
